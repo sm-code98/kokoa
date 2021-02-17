@@ -1,0 +1,45 @@
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: var(--horizontal-space);
+}
+.screen-header__title {
+  font-size: 30px;
+  font-weight: 600;
+}
+.screen-header__icons span {
+  margin-left: 25px;
+}
+.screen-header__chats {
+  margin-bottom: 15px;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chat-header__all {
+  width: 33%;
+  margin: 30px 25px;
+}
+.chat-header__all:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+.chat-header__all:last-child {
+  display: flex;
+  justify-content: flex-end;
+}
+.chat-header__name {
+  font-size: 25px;
+  font-weight: 600;
+}
+.chat-header a {
+  font-size: 20px;
+  font-weight: 600;
+}
+.chat-header__all .fa-vote-yea {
+  margin: 0 30px;
+}
