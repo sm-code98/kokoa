@@ -1,0 +1,54 @@
+.welcome-header {
+  margin: 90px 0px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.welcome-header__title {
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+.welcome-header__text {
+  width: 60%;
+  opacity: 0.7;
+}
+#login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px;
+}
+#login-form input {
+  border: none;
+  font-size: 18px;
+  padding: 15px 0px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+#login-form input:not([type="submit"]) {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+/*not이 적용이 안되는데 왜 그런지 이유를 모르겠다. 그냥 밑에처럼 input[type="submit"] {border-bottom: none}으로 처리했다 일단.*/
+
+#login-form input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+#login-form input:focus {
+  border-color: var(--yellow);
+}
+
+#login-form input[type="submit"] {
+  background-color: var(--yellow);
+  border-bottom: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 5px;
+}
+#login-form a {
+  text-align: center;
+  text-decoration: none;
+  color: inherit; /*inherit은 a태그가 부모태그인 login-form의 컬러 옵션을 그대로 물려받는다는 뜻임*/
+  font-size: 13px;
+}

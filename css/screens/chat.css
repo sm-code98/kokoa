@@ -1,0 +1,192 @@
+#chat-screen {
+  background-color: #abc1d1;
+  height: 1100vh;
+}
+#chat-screen .status-bar {
+  top: 0;
+  background-color: #abc1d1;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  /*레이어의 순서가 몇 번째인지 설정 높을수록 레이어의 우선 순위임
+  position absolute, fixed에 대한 레이어 우선순위 설정 가능*/
+}
+#chat-screen .alt-header {
+  top: 0;
+  margin-top: 15px;
+  background-color: #abc1d1;
+  position: fixed;
+  width: 100%;
+  /*position:fixed 이후 width 100%를 추가해야 텍스트 배치가 안 깨짐
+  + 아이콘이 화면에서 짤렸는데, 이걸 조절하려면 box-sizing: border box 추가*/
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.main-chat {
+  margin-top: 125px;
+  display: flex;
+  flex-direction: column;
+  /*수평 축을 세로로 바꾸고 세로 중앙배치(align-times center)값을 넣으면 화면 가로축 기준으로 중앙배치 할 수 있음*/
+  align-items: center;
+  font-size: 14px;
+}
+.chat__timestamp {
+  color: white;
+  background-color: #92a4b2;
+  padding: 13px 15px;
+  border-radius: 20px;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+.message-row {
+  width: 100%;
+  display: flex;
+  margin-bottom: 25px;
+}
+.message-row img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.message__author {
+  opacity: 0.8;
+  font-size: 16px;
+  margin-bottom: 7px;
+  display: block;
+}
+.message__info {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+.message__bubble {
+  background-color: white;
+  padding: 8px 15px;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  font-size: 18px;
+  margin-right: 6px;
+}
+.message__time {
+  opacity: 0.8;
+  font-size: 13px;
+}
+.message__read {
+  opacity: 0.9;
+  color: yellow;
+  display: block;
+  position: absolute;
+  right: 27px;
+  top: 4px;
+}
+.message-row-own {
+  justify-content: flex-end;
+  animation: fadeIn 0.8s linear;
+}
+.message-row-own .message__bubble {
+  background-color: var(--yellow);
+  border-top-right-radius: 0px;
+  border-top-left-radius: 15px;
+  margin-right: 0;
+  margin-left: 6px;
+  /*order: 1;*/
+}
+/*order은 flex로 설정되어 있을 때 배치 순서를 조율하는 기능
+.message-row-own .message__time {
+  order: 0;
+}
+*/
+.message-row-own .message__read {
+  left: 26px;
+}
+
+.message-row-own .message__info {
+  flex-direction: row-reverse;
+}
+/* 위의 order랑 같은 기능 flex 설정되어 있을 때 순서 바꿀 수 있음*/
+.reply {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 25px;
+  align-items: center;
+  box-sizing: border-box;
+  /*box-sizing border-box는 화면에서 아이콘이 몇개 짤리기 때문에 해줘야함*/
+  transition: all 0.3s ease-in-out;
+}
+.reply:focus-within {
+  transform: translateY(80px);
+}
+.reply .reply__column:first-child {
+  width: 5%;
+}
+.reply .reply__column:last-child {
+  width: 95%;
+  position: relative;
+}
+.reply input {
+  padding: 10px;
+  width: 98%;
+  border: var(--main-border);
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.reply:focus-within input {
+  width: 90vw;
+  transform: translateX(-6%) translateY(-80px);
+}
+.reply__column:last-child > i,
+.reply__column:last-child button {
+  position: absolute;
+  right: -6px;
+  top: 1px;
+}
+.reply i {
+  opacity: 0.5;
+}
+.reply__column:last-child > i {
+  right: 50px;
+  top: 12px;
+}
+.reply__column button {
+  background-color: var(--yellow);
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.reply__column button i {
+  opacity: 0.7;
+}
+.reply__column button:focus,
+.reply__column button:active {
+  outline: none;
+}
+@keyframes fadeIn {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes fadeIn-left {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.message-row__other {
+  animation: fadeIn-left 0.8s linear;
+}
